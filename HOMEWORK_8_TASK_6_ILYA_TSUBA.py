@@ -114,7 +114,7 @@ def interaktivchik():
             elif choice == 6:
                 print(dict_of_funcs[choice][1](file_path, input("Введите язык программирования: ")))
             elif choice == 7:
-                print(dict_of_funcs[choice][1](file_path, int(input("Введите год: "))))
+                print(dict_of_funcs[choice][1](file_path, int(input("Введите год отстчета: "))))
         print()
 
 
