@@ -9,5 +9,3 @@ class Soda:
             return "You have soda with no taste."
 
 
-my_soda = Soda()
-print(my_soda)
