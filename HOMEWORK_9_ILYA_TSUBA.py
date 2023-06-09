@@ -1,3 +1,6 @@
+from math import pi
+
+
 class Soda:
     def __init__(self, taste=None):
         self.taste = taste
@@ -32,6 +35,7 @@ class Math:
 obj2 = Math()
 print(obj2.addition(2, 3))
 
+
 class Car:
 
     def __init__(self, color=None, type=None, year=None):
@@ -65,3 +69,55 @@ car1.set_type("bus")
 print(car1.color)
 print(car1.year)
 print(car1.type)
+
+
+class Sphere:
+    def __init__(self, x, y, z, r):
+        self.x = x
+        self.y = y
+        self.z = z
+        self.r = r
+
+    def get_volume(self):  # 4πR³/3
+        return f"Sphere volume is {round((4 * pi * self.r ** 3) / 3, 2)}"
+
+    def get_square(self):  # 4πR²
+        return f"Sphere square is {round(4 * pi * self.r ** 2, 2)}"
+
+    def get_radius(self):
+        return f"Radius is {self.r}"
+
+    def get_center(self):
+        return f"Sphere center coordinates are {self.x, self.y, self.z}"
+
+    def set_radius(self, r):
+        self.r = r
+
+    def set_center(self, x, y, z):
+        self.x = x
+        self.y = y
+        self.z = z
+
+    def is_point_inside(self, x, y, z):
+        return (self.x - x) ** 2 + (self.y - y) ** 2 + (self.z - z) ** 2 <= self.r ** 2
+
+
+sphere1 = Sphere(2, 3, 4, 5)
+
+print(sphere1.get_volume())
+
+print(sphere1.get_square())
+
+print(sphere1.get_radius())
+
+print(sphere1.get_center())
+
+sphere1.set_radius(7)
+
+print(sphere1.get_radius())
+
+sphere1.set_center(5, 6, 7)
+
+print(sphere1.get_center())
+
+print(sphere1.is_point_inside(8, 9, 10))
