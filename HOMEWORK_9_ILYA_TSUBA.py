@@ -121,3 +121,28 @@ sphere1.set_center(5, 6, 7)
 print(sphere1.get_center())
 
 print(sphere1.is_point_inside(8, 9, 10))
+
+
+class SuperStr(str):
+
+    def __init__(self, string):
+        self.string = string
+        super().__init__()
+
+    def is_repeatance(self, s):
+        flag = False
+        while len(s) <= len(self.string):
+            s += s
+            if self.string == s:
+                flag = True
+        return flag
+
+    def is_palindrome(self):
+        return self.string.lower() == self.string.lower()[::-1]
+
+
+str5 = SuperStr("Aaaa")
+
+print(str5.is_repeatance("aa"))
+
+print(str5.is_palindrome())
