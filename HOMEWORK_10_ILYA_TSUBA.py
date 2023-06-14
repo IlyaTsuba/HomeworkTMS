@@ -89,3 +89,58 @@ good3 = Good("Tshirt", "Hutkasmachna", 1000)
 
 warehouse = Warehouse([good1, good2, good3])
 
+
+# task2
+class BeeElephant:
+
+    def __init__(self, bee, elephant):
+        self.bee = bee
+        self.elephant = elephant
+
+    @property
+    def get_beeandelephant_values(self):
+        return f"Bee value = {self.bee}, Elephant value = {self.elephant}"
+
+    def fly(self):
+        return self.bee >= self.elephant
+
+    def trumpet(self):
+        if self.elephant >= self.bee:
+            return "tu-tu-doo-doo"
+        else:
+            return "wzzz"
+
+    def eat(self, meal, value):
+        meal = meal.lower()
+        if meal not in ["nectar", "grass"]:
+            print("Set correct meal")
+        else:
+            if meal == "nectar":
+                if self.bee + value > 100:
+                    print("Max value of bee is 100! Set correct value.")
+                elif self.elephant - value < 0:
+                    print("Min value of elephant is 0! Set correct value.")
+                else:
+                    self.elephant -= value
+                    self.bee += value
+
+            if meal == "grass":
+                if self.elephant + value > 100:
+                    print("Max value of elephant is 100! Set correct value.")
+                elif self.bee - value < 0:
+                    print("Min value of bee is 0! Set correct value.")
+                else:
+                    self.bee -= value
+                    self.elephant += value
+
+
+sanya = BeeElephant(50, 50)
+print(sanya.get_beeandelephant_values)
+sanya.eat("grass", 25)
+print(sanya.fly())
+print(sanya.trumpet())
+print(sanya.get_beeandelephant_values)
+sanya.eat("nectar", 80)
+print(sanya.fly())
+print(sanya.trumpet())
+print(sanya.get_beeandelephant_values)
