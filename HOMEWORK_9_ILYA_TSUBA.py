@@ -131,9 +131,10 @@ class SuperStr(str):
 
     def is_repeatance(self, s):
         flag = False
-        while len(s) <= len(self.string):
-            s += s
-            if self.string == s:
+        result = ""
+        while len(result) <= len(self.string):
+            result += s
+            if self.string == result:
                 flag = True
         return flag
 
@@ -141,7 +142,7 @@ class SuperStr(str):
         return self.string.lower() == self.string.lower()[::-1]
 
 
-str5 = SuperStr("Aaaa")
+str5 = SuperStr("aaaaaaa")
 
 print(str5.is_repeatance("aa"))
 
