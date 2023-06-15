@@ -9,6 +9,10 @@ class Good:
     def __str__(self):
         return f"{self.__good_name} {self.__shop_name} {self.__price}"
 
+    def __add__(self, other):
+        if isinstance(other, Good):
+            return self.__price + other.__price
+
     @property
     def good_name(self):
         return self.__good_name
@@ -33,9 +37,6 @@ class Good:
     def good_price(self, price):
         self.__price = price
 
-    def __repr__(self):
-        return f'{self.good_name}, {self.shop_name}, {self.good_price}'
-
 
 class Warehouse:
 
@@ -46,11 +47,6 @@ class Warehouse:
         for el in self.__list_of_goods:
             self.__dict_of_goods[el.good_name] = [el.shop_name, el.good_price]
 
-    def __add__(self, other):
-        sum_of_goods = 0
-        for el in other:
-            sum_of_goods += self.__dict_of_goods[el][1]
-        return sum_of_goods
 
     @property
     def get_dict(self):
@@ -88,6 +84,8 @@ good2 = Good("Iphone", "TSUM", 1500)
 good3 = Good("Tshirt", "Hutkasmachna", 1000)
 
 warehouse = Warehouse([good1, good2, good3])
+
+print(good2 + good3)
 
 
 # task2
