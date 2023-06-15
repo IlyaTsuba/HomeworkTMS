@@ -14,7 +14,7 @@ class Soda:
 
 obj1 = Soda("strawberry")
 
-print(obj1)
+
 
 
 class Math:
