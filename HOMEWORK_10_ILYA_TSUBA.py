@@ -142,3 +142,137 @@ sanya.eat("nectar", 80)
 print(sanya.fly())
 print(sanya.trumpet())
 print(sanya.get_beeandelephant_values)
+
+
+class Bus:
+
+    def __init__(self, list_of_passengers, speed, max_seats, max_speed, free_seats, seats):
+        self.__speed = speed
+        self.__max_seats = max_seats
+        self.__max_speed = max_speed
+        self.__list_of_passengers = list_of_passengers
+        self.__free_seats = free_seats
+        self.__seats = seats
+        if len(self.__list_of_passengers) <= self.__max_seats:
+            self.__free_seats = True
+        else:
+            self.__free_seats = False
+
+        for i in range(1, self.__max_seats + 1):  # Making a bus
+            self.__seats[i] = None
+
+        for i in range(len(self.__list_of_passengers)):  # Boarding
+            seats[i + 1] = self.__list_of_passengers[i]
+
+    @property
+    def speed(self):
+        return self.__speed
+
+    @property
+    def max_seats(self):
+        return self.__max_seats
+
+    @property
+    def max_speed(self):
+        return self.__max_speed
+
+    @property
+    def list_of_passangers(self):
+        return self.__list_of_passengers
+
+    @property
+    def free_seats(self):
+        return self.__free_seats
+
+    @property
+    def seats(self):
+        return self.__seats
+
+    def boarding(self, indicator, num_of_pass, names_of_pass):
+        if indicator == "+":
+            if len(self.__list_of_passengers) + len(names_of_pass) > self.__max_seats:
+                print("You can't board more passengers than number of seats!")
+            else:
+                for _ in range(num_of_pass):
+                    for passenger in names_of_pass:
+                        self.__list_of_passengers.append(passenger)
+                        for seat_num, passengers in self.__seats.items():
+                            if self.__seats[seat_num] is None:
+                                self.__seats[seat_num] = passenger
+                                break
+
+        if indicator == "-":
+            if len(self.__list_of_passengers) - len(names_of_pass) < 0:
+                print("There are less passengers than you want to unboard")
+            else:
+                for i in range(num_of_pass):
+                    for seat_num, passenger in self.__seats.items():
+                        if passenger in names_of_pass:
+                            self.__seats[seat_num] = None
+                            self.__list_of_passengers.remove(passenger)
+
+    def bus_speed(self, indicator, value):
+        if indicator == "up":
+            if self.__speed + value > self.__max_speed:
+                print(
+                    f"Bus speed now is {self.__speed}. Max speed is {self.__max_speed}. You can't go {self.__speed + value}!")
+            else:
+                self.__speed += value
+                print(f"The bus is moving faster. Bus speed now is {self.__speed}.")
+        if indicator == "down":
+            if self.__speed - value <= 0:
+                self.__speed = 0
+                print(f"Bus is stopped!")
+            else:
+                self.__speed -= value
+                print(f"The bus is moving slower. Bus speed now is {self.__speed}.")
+
+    def __isub__(self, other):
+        if len(self.__list_of_passengers) == 0:
+            print("There are less passengers than you want to unboard")
+        elif isinstance(other, str):
+            for seat_num, passenger in self.__seats.items():
+                if passenger == other:
+                    self.__seats[seat_num] = None
+                    self.__list_of_passengers.remove(other)
+                    break
+        return self
+
+    def __iadd__(self, other):
+        if len(self.__list_of_passengers) == 10:
+            print("You can't board more passengers than number of seats!")
+        elif isinstance(other, str):
+            for seat_num, passenger in self.__seats.items():
+                self.__list_of_passengers.append(other)
+                if passenger is None:
+                    self.__seats[seat_num] = other
+                    break
+        return self
+
+    def __contains__(self, item):
+        if isinstance(item, str):
+            if item in self.__list_of_passengers:
+                print(f"Passenger {item} is in bus!")
+            else:
+                print(f"Passenger {item} is not in bus!")
+
+
+
+bus1 = Bus(["Ivanov", "Petrov", "Sidorov", "Tsuba", "Erokhina"], 90, 10, 120, True, {})
+
+print(bus1.seats)
+print(bus1.list_of_passangers)
+bus1.boarding("-", 1, ["Ivanov"])
+print(bus1.seats)
+print(bus1.list_of_passangers)
+bus1.boarding("+", 1, ["Ivanov", "Pimenau"])
+print(bus1.seats)
+print(bus1.list_of_passangers)
+bus1.bus_speed("up", 10)
+bus1 -= "Ivanov"
+print(bus1.seats)
+print(bus1.list_of_passangers)
+bus1 += "Ivanov"
+print(bus1.seats)
+print(bus1.list_of_passangers)
+"Fedorov" in bus1
