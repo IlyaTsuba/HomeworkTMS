@@ -268,7 +268,7 @@ print(bus1.list_of_passangers)
 bus1.boarding("+", 1, ["Ivanov", "Pimenau"])
 print(bus1.seats)
 print(bus1.list_of_passangers)
-bus1.bus_speed("up", 10)
+bus1.bus_speed("up", 15)
 bus1 -= "Ivanov"
 print(bus1.seats)
 print(bus1.list_of_passangers)
