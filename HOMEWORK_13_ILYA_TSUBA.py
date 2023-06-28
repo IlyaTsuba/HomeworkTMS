@@ -12,7 +12,7 @@ def task1(number):
         a, b = b, a + b
 
 
-fib_num = task1(15)
+fib_num = task1(16)
 
 for i in fib_num:
     print(i)
