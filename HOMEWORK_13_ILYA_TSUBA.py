@@ -31,10 +31,39 @@ obj1 = task2(4)
 for i in obj1:
     print(i, end='')
 
-# task 3
+# # task 3
 print(os.name)
 print(sys.platform)
 print(os.getcwd())
+
+file_extensions = {"text_files": "txt", "csv_files": "csv"}
+path = os.path.join(os.getcwd())
+all_files = os.listdir(path)
+
+for dir_name, extension in file_extensions.items():
+    counter = 0
+    folder_size = 0
+    for cur_file in all_files:
+        cur_file_extension = cur_file.split('.')[-1]
+        if cur_file_extension == extension:
+            counter += 1
+            if not os.path.exists(dir_name):
+                os.mkdir(dir_name)
+                folder_size += os.path.getsize(cur_file) / 1000
+                print(f"Folder {dir_name} was created!")
+                os.replace(cur_file, f"{dir_name}/{cur_file}")
+                print(f"File {cur_file} was replaced to folder {dir_name}")
+            else:
+                folder_size += os.path.getsize(cur_file) / 1000
+                os.replace(cur_file, dir_name + "/" + cur_file)
+                print(f"File {cur_file} was replaced to folder {dir_name}")
+            all_files.remove(cur_file)
+
+    print(f"{counter} files were replaced to folder {dir_name}")
+    print(f"Total size of folder {dir_name} is {round(folder_size, 1)}Kbs")
+
+# У меня тут вопрос. Я так и не придумал как переимоновать файл зная его название, но не зная расположение.......
+
 
 # task 4
 
