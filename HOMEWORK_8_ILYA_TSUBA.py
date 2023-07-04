@@ -1,6 +1,5 @@
 print("____TASK1____")
 
-
 with open('lines.txt', encoding='utf-8') as file_1:  # reading data from file
     content = list(map(str.strip, file_1.readlines()))  # Making a list
     res_list = []
@@ -35,7 +34,6 @@ print(result)
 # task2
 print("____TASK2____")
 
-
 file_name_2 = input("Set a name of file for task 2:")
 with open('stop_words.txt', encoding='utf-8') as stop_words:  # Make a list of stop words
     stop_words_list = stop_words.readline().split()
@@ -51,7 +49,6 @@ with open(file_name_2, encoding='utf-8') as file_2:  # Open a test file
 # task3
 print("____TASK3____")
 
-
 file_name_3 = input("Set a name of file for task 3:")
 with open(file_name_3, encoding='utf-8') as file_3:
     content_3 = list(map(str.split, file_3.readlines()))
@@ -59,10 +56,8 @@ with open(file_name_3, encoding='utf-8') as file_3:
         if int(i[-1]) < 3:
             print(i[0], i[1])
 
-
 # task4
 print("____TASK4____")
-
 
 file_name_4 = input("Set a name of file for task 4:")
 with open(file_name_4, encoding='utf-8') as file:
@@ -74,10 +69,8 @@ with open(file_name_4, encoding='utf-8') as file:
     result_string = [int(i) for i in result_string.split()]
     print(sum(result_string))
 
-
 # task5
 print("____TASK5____")
-
 
 file_name_5 = input("Set a name of file for task 5:")
 with open(file_name_5, encoding='utf-8') as file_5:
@@ -87,12 +80,13 @@ with open(file_name_5, encoding='utf-8') as file_5:
     index = 1
     for s in content_5:
         for char in s:
-            if 65 <= ord(char) <= 90:
+            if 65 <= ord(char) <= 90:  # 65 - 90 are numbers of uppercase letters per utf-8
                 d = ord(char) + index
                 if d > 90:
                     d -= 26
                 print(chr(d), end="")
-            elif 97 <= ord(char) <= 122:
+
+            elif 97 <= ord(char) <= 122:  # 97 - 122 are numbers of lowercase letters per utf-8
                 d = ord(char) + index
                 if d > 122:
                     d -= 26
