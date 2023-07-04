@@ -1,4 +1,3 @@
-# task1
 print("____TASK1____")
 
 
@@ -7,15 +6,14 @@ with open('lines.txt', encoding='utf-8') as file_1:  # reading data from file
     res_list = []
     for i in content:  # Delete not alpha symbols
         result_string = ""
-        for j in i:
-            result_string += j if j.isalpha() else " "
-        res_list.append(result_string)
+        i = [i for i in i.split()]
+        res_list.append(i)
 
     result = []
 
     for s in res_list:  # Make a dict with words and number of repetitions for each word
         res_dict = {}
-        for word in s.split():
+        for word in s:
             if word not in res_dict:
                 res_dict[word] = 1
             elif word in res_dict:
@@ -31,6 +29,8 @@ with open('lines.txt', encoding='utf-8') as file_1:  # reading data from file
 
 with open('result_task1.txt', "w", encoding='utf-8') as result_file_task1:
     result_file_task1.writelines(line + '\n' for line in result)
+
+print(result)
 
 # task2
 print("____TASK2____")
@@ -99,5 +99,3 @@ with open(file_name_5, encoding='utf-8') as file_5:
                 print(chr(d), end="")
         index += 1
         print()
-
-
