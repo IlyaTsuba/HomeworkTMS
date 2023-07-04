@@ -85,6 +85,7 @@ with open(file_name_5, encoding='utf-8') as file_5:
                 if d > 90:
                     d -= 26
                 print(chr(d), end="")
+
             elif 97 <= ord(char) <= 122:  # 97 - 122 are numbers of lowercase letters per utf-8
                 d = ord(char) + index
                 if d > 122:
